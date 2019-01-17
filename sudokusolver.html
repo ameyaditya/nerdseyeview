@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Sudoku Solver</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- pageheader
+    ================================================== -->
+    <div class="s-pageheader">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="index.html">
+                        <img src="images/logo1.png" alt="Homepage">
+                    </a>
+                </div> <!-- end header__logo -->
+
+                <ul class="header__social">
+                    <li>
+                        <a href="https://www.facebook.com/ameyaditya.achar" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/ameyaditya" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/ameyaditya" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ameyaditya" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
+
+                
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Nerd's Eye View</h2>
+
+                    <ul class="header__nav">
+                        <li><a href="index.html" title="">Home</a></li>
+                        <li class="has-children current">
+                            <a href="#0" title="">Categories</a>
+                            <ul class="sub-menu">
+                            <li><a href="category.html">Projects</a></li>
+                            <li><a href="category.html">Photography</a></li>
+                            <li><a href="category.html">Travel</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-children ">
+                            <a href="#0" title="">Blog</a>
+                            <ul class="sub-menu">
+                            <li><a href="single-video.html">Tech Post</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" title="">About</a></li>
+                        <li><a href="contact.html" title="">Contact</a></li>
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+
+    </div> <!-- end s-pageheader -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-gallery">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    Sudoku Solver
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date">April 8, 2018</li>
+                    <li class="cat">
+                        In
+                        <a href="#0">Tech Posts</a>
+                        <a href="#0">Projects</a>
+                    </li>
+                </ul>
+            </div> <!-- end s-content__header -->
+    
+            <div class="s-content__media col-full">
+                <div class="s-content__slider slider">
+                    <div class="slider__slides">
+                        <div class="slider__slide">
+                            <img src="pics/homepage/sudoku.png" 
+                                 srcset="pics/homepage/sudoku1.png 2000w, 
+                                         pics/homepage/sudoku1.png 1000w, 
+                                         pics/homepage/sudoku1.png 500w" 
+                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                        </div>
+                        <div class="slider__slide">
+                            <img src="pics/homepage/sudoku.png" 
+                                 srcset="pics/homepage/sudoku2.png 2000w, 
+                                         pics/homepage/sudoku2.png 1000w, 
+                                         pics/homepage/sudoku2.png 500w" 
+                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                        </div>
+                        <!--
+                        <div class="slider__slide">
+                            <img src="images/thumbs/single/gallery/single-gallery-03-1000.jpg" 
+                                 srcset="images/thumbs/single/gallery/single-gallery-03-2000.jpg 2000w, 
+                                        images/thumbs/single/gallery/single-gallery-03-1000.jpg 1000w, 
+                                        images/thumbs/single/gallery/single-gallery-03-500.jpg 500w" 
+                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                        </div>
+                    -->
+                    </div>
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full s-content__main">
+
+                <p class="lead">Image Processing is a very interesting topic to work on. Anybody working towards machine learning would have worked in the field of image processing. So what I tried to build was a sudoku solver application which would take the image of the sudoku puzzle and give you the solution.</p>
+                
+                <p>Sudoku is an interesting puzzle, it is a 9x9 square with 81 cells, subdivided into 9, 3x3 boxes, the aim is to fill every cell with a number from 1-9 such that each row, each column and each sub division has all the number from one to nine. Or can it also be told as any number appeared in a cell cannot appear in the same row, same column and same subdivision.
+                </p>
+
+                <p>
+                <img src="pics/homepage/sudoku3.png" 
+                     srcset="pics/homepage/sudoku3.png 2000w, pics/homepage/sudoku3.png 1000w, pics/homepage/sudoku3.png 500w" 
+                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </p>
+
+                <h2>Approach</h2>
+
+                <p>If this was a normal problem solving question, we would have used the backtrack algorithm, which calls itself recursively until the puzzle is solved. The base condition is to check if we can still enter numbers into the sudoku matrix, and iterate through numbers from 1-9 and if it is safe put that number in a cell I.e. the same number doesn’t exist in the same row same column and same subdivision, update that number in the matrix, and call the sudoku_solve function again. Refer the code in the GitHub link attached below for more better understanding.</p>
+<!--
+                <blockquote><p>This is a simple example of a styled blockquote. A blockquote tag typically specifies a section that is quoted from another source of some sort, or highlighting text in your post.</p></blockquote>
+-->
+                <p>The above case handled solving the sudoku if it was in the form of a matrix, now the question is how do we generate the matrix from an image of the sudoku.
+                </p>
+
+                <!--<h3>Smaller Heading</h3>-->
+
+                <p>My idea was to isolate the sudoku square and flatten it out, then resize the flattened image of the puzzle to 900x900 for uniformity and converted the image to grayscale to maintain simplicity. Then I created my ROI as a 100x100 square which is the size of each cell and iterate through the whole image. This would give us the data present in each of the cell. If my region of interest has some amount of black pixels in it, means that the cells contains a number and is not an empty one.
+
+<pre><code>
+    def create_sudoku_matrix(image2):
+        clf = svm.LinearSVC()
+        training_classifier(clf,"data\\")
+        sudoku = [[0 for i in range(9)]for j in range(9)]
+        iterX = 0
+        iterY = 0
+        image = image2.copy()
+        pts = image_checker(image)
+
+        #pts is a 3D array of size(4,1,2) we reshape it into (4,2)
+        pts = pts.reshape(4,2)
+
+        #creating a temporary array of zeros to store the coordinates in order
+        rect = np.zeros((4,2), dtype='float32')
+
+        #storing the sum along the rows and difference across each row
+        s = pts.sum(axis=1)
+        diff = np.diff(pts, axis=1)
+
+        #the minimum sum value is the top left point and maximum sum value is the
+        #bottom right point, similarl the minimum difference will the the top right
+        #point and maximum difference is the bottom left point
+        rect[0] = pts[np.argmin(s)]
+        rect[2] = pts[np.argmax(s)]
+        rect[1] = pts[np.argmin(diff)]
+        rect[3] = pts[np.argmax(diff)]
+
+        #unpacking the array
+        (tl,tr,br,bl) = rect
+
+        #finding the width and height of the sudoku puzzle in the image
+        #using the coordinates obtained using the formula
+        #length = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+        widthA = np.sqrt(((br[0] - bl[0]) ** 2) + ((br[1] - bl[1]) ** 2))
+        widthB = np.sqrt(((tr[0] - tl[0]) ** 2) + ((tr[1] - tl[1]) ** 2))
+        heightA = np.sqrt(((bl[0] - tl[0]) ** 2) + ((bl[1] - tl[1]) ** 2))
+        heightB = np.sqrt(((br[0] - tr[0]) ** 2) + ((br[1] - tr[1]) ** 2))
+
+        #getting the maximum values of the final dimensions of the puzzle
+        maxwidth = max(int(widthA),int(widthB))
+        maxheight = max(int(heightA),int(heightB))
+
+        #construct our destinatio points which wil be used to map the screen to
+        #to-down, "brid eye" view
+        dst = np.array([
+        [0,0],
+        [maxwidth - 1, 0],
+        [maxwidth - 1, maxheight - 1],
+        [0, maxheight - 1]], dtype='float32')
+
+        #calculate the perspective transform matrix and warp the perspective to grab
+        #the screen
+        M = cv2.getPerspectiveTransform(rect,dst)
+        warp = cv2.warpPerspective(image,M,(maxwidth,maxheight))
+
+        #resizing the image into 630x630 image
+        res = cv2.resize(warp,(630,630),interpolation=cv2.INTER_AREA)
+        #cv2.imshow("sudoku",res)
+        #cv2.waitKey(0)
+
+        """
+        according to the image generated and stored in res, the size of the puzzle
+        is 630x630, which imples that each cell of the sudoku is 70x70 as it is as
+        square image
+        we interate through rows and columns of the entire sudoku and if we find a
+        number in that cell we predict the number using the svm classifier and
+        store it in a 2D list
+        """
+        for i in range(0,561,70):
+            for j in range(0,561,70):
+
+                #creating our ROI
+                roi = res[i:i+70,j:j+70]
+
+                #process the image and using countnonzero() we check if the cell
+                #has a number or not
+
+                grey = cv2.cvtColor(roi,cv2.COLOR_BGR2GRAY)
+                _,thresh = cv2.threshold(grey,80,255,cv2.THRESH_BINARY)
+                crop_width = 10
+                cropped = thresh[crop_width:70-crop_width,crop_width:70-crop_width]
+
+                if int(cv2.countNonZero(cropped)) < 2400:
+                    test = cropped.copy()
+                    test = cv2.resize(test,(50,50),interpolation=cv2.INTER_AREA)
+                    test = test.reshape(1,2500)
+                    prediction = int(*clf.predict(test))
+
+                    cv2.imshow("block",test.reshape(50,50))
+                    print(clf.predict(test))
+                    #print(clf.predict(thre))
+                    cv2.waitKey(0)
+
+                    sudoku[iterX%9][iterY%9] = prediction
+                iterY += 1
+            iterX += 1
+        return sudoku
+</code></pre>
+
+                <p>In the near future, I plan to use the MNSIT dataset to to create my classifier using CNN which would make it more efficient.</p>
+                <p>The code for the entire application is there in the following GitHub link. <a href="https://github.com/ameyaditya/SudokuSolver" target="_blank">Click here for complete code</a></p>
+
+                <p class="s-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="s-content__tag-list">
+                        <a href="#0">Image Processing</a>
+                        <a href="#0">Sudoku</a>
+                        <a href="#0">Machine Learning</a>
+                        <!--<a href="#0">turpis</a>-->
+                    </span>
+                </p> <!-- end s-content__tags -->
+
+                <div class="s-content__author">
+                    <img src="images/avatars/user-03.jpg" alt="">
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="#0">Amey Aditya Achar J</a>
+                        </h4>
+                    
+                        <p>My name is Amey Aditya Achar J and I am a computer Science Enthusiast. I am 19 years old residing in Bengaluru and I look forward to becoming a Data Scientist. I am pursuing my Bachelors of Engineering at RNS Institute of Technology, and I have worked on many projects involving web designing, IoT, Home Automation and Machine Learning. I consider myself to be a programmer and a designer.
+                        </p>
+
+                        <ul class="s-content__author-social">
+                           <li><a href="https://www.facebook.com/ameyaditya.achar" target="_blank">Facebook</a></li>
+                           <li><a href="https://twitter.com/ameyaditya" target="_blank">Twitter</a></li>
+                           <!--<li><a href="#0">GooglePlus</a></li>-->
+                           <li><a href="https://www.instagram.com/ameyaditya" target="_blank">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="s-content__pagenav">
+                    <div class="s-content__nav">
+                        <div class="s-content__prev">
+                            <a href="smartMirror.html" rel="prev">
+                                <span>Previous Post</span>
+                                Smart Mirror 
+                            </a>
+                        </div>
+                        <!--
+                        <div class="s-content__next">
+                            <a href="#0" rel="next">
+                                <span>Next Post</span>
+                                Less Is More 
+                            </a>
+                        </div>-->
+                    </div>
+                </div> <!-- end s-content__pagenav -->
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+    </section> <!-- s-content -->
+
+
+    <!-- s-extra
+    ================================================== -->
+<section class="s-extra">
+
+        <div class="row top">
+
+            <div class="col-eight md-six tab-full popular">
+                <h3>Popular Posts</h3>
+
+                <div class="block-1-2 block-m-full popular__posts">
+                    <article class="col-block popular__post">
+                        <a href="sudokusolver.html" class="popular__thumb">
+                            <img src="pics/homepage/sudoku1.png" alt="sudoku solver">
+                        </a>
+                        <h5><a href="sudokusolver.html">Sudoku Solver.</a></h5>
+                        <section class="popular__meta">
+                                <span class="popular__author"><span>By</span> <a href="about.html"> Amey Aditya Achar J</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2018-04-08">Apr 8, 2018</time></span>
+                        </section>
+                    </article>
+                    <article class="col-block popular__post">
+                        <a href="homeAutomation.html" class="popular__thumb">
+                            <img src="pics/bulb.jpg" alt="">
+                        </a>
+                        <h5><a href="homeAutomation.html">Home Automation with Raspberry Pi and Google Assistant.</a></h5>
+                        <section class="popular__meta">
+                            <span class="popular__author"><span>By</span> <a href="about.html"> Amey Aditya Achar J</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2018-12-03">Dec 3, 2018</time></span>
+                        </section>
+                    </article>
+                    <article class="col-block popular__post">
+                        <a href="paperpresentation.html" class="popular__thumb">
+                            <img src="pics/mainpage/1.jpg" alt="">
+                        </a>
+                        <h5><a href="paperpresentation.html">Artificial Intelligence in Biometrics and Face Detection.</a></h5>
+                        <section class="popular__meta">
+                                <span class="popular__author"><span>By</span> <a href="about.html"> Amey Aditya Achar J</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2018-08-30">Aug 30, 2018</time></span>
+                        </section>
+                    </article>
+                    <article class="col-block popular__post">
+                        <a href="kudremukha.html" class="popular__thumb">
+                            <img src="pics/kudremuk.JPG" alt="">
+                        </a>
+                        <h5><a href="kudremukha.html">Trek to Kudremukha.</a></h5>
+                        <section class="popular__meta">
+                            <span class="popular__author"><span>By</span> <a href="about.html"> Amey Aditya Achar J</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2018-08-01">Aug 01, 2018</time></span>
+                        </section>
+                    </article>
+                    <article class="col-block popular__post">
+                        <a href="smartMirror.html" class="popular__thumb">
+                            <img src="pics/mirror.JPG" alt="">
+                        </a>
+                        <h5><a href="smartMirror.html">Smart Mirror.</a></h5>
+                        <section class="popular__meta">
+                            <span class="popular__author"><span>By</span> <a href="about.html"> Amey Aditya Achar J</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2017-07-01">Jul 01, 2018</time></span>
+                        </section>
+                    </article>
+                    <article class="col-block popular__post">
+                        <a href="#0" class="popular__thumb">
+                            <img src="pics/ityukta/ityukta 2018 View-01.jpg" alt="">
+                        </a>
+                        <h5><a href="ityukta.html">Ityutka Newsletter</a></h5>
+                        <section class="popular__meta">
+                            <span class="popular__author"><span>By</span> <a href="#0"> Amey Aditya Achar J</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2017-05-05">May 05, 2018</time></span>
+                        </section>
+                    </article>
+                </div> <!-- end popular_posts -->
+            </div> <!-- end popular -->
+            
+            <div class="col-four md-six tab-full about">
+                <h3><a href="about.html">About Me</a></h3>
+
+                <p>
+                My name is Amey Aditya Achar J and I am a computer Science Enthusiast. I am 19 years old residing in Bengaluru and I look forward to becoming a Data Scientist. I am pursuing my Bachelors of Engineering at RNS Institute of Technology, and I have worked on many projects involving web designing, IoT, Home Automation and Machine Learning. I consider myself to be a programmer and a designer..
+                </p>
+
+                <ul class="about__social">
+                    <li>
+                        <a href="https://www.facebook.com/ameyaditya.achar" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/ameyaditya" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/ameyaditya" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ameyaditya" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
+            </div> <!-- end about -->
+
+        </div> <!-- end row -->
+
+        <div class="row bottom tags-wrap">
+            <div class="col-full tags">
+                <h3>Tags</h3>
+
+                <div class="tagcloud">
+                    <a href="projects.html">Projects</a>
+                    <a href="photo.html">Photography</a>
+                    <a href="travel.html">Travel</a>
+                    <a href="techposts.html">Tech Posts</a>
+                </div> <!-- end tagcloud -->
+            </div> <!-- end tags -->
+        </div> <!-- end tags-wrap -->
+
+    </section> <!-- end s-extra -->
+
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main" >
+            <div class="row">
+                
+                <div class="col-two md-four mob-full s-footer__sitelinks">
+                        
+                    <h4>Quick Links</h4>
+
+                    <ul class="s-footer__linklist">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="travel.html">Travel</a></li>
+                        <li><a href="photo.html">Photograohy</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+
+                </div> </div></div><!-- end s-footer__sitelinks -->
+                <!--<div class="col-two md-four mob-full s-footer__archives">
+                        
+                    <h4>Archives</h4>
+
+                    <ul class="s-footer__linklist">
+                        <li><a href="#0">January 2018</a></li>
+                        <li><a href="#0">December 2017</a></li>
+                        <li><a href="#0">November 2017</a></li>
+                        <li><a href="#0">October 2017</a></li>
+                        <li><a href="#0">September 2017</a></li>
+                        <li><a href="#0">August 2017</a></li>
+                    </ul>
+
+                </div> --><!-- end s-footer__archives -->
+<!--
+                <div class="col-two md-four mob-full s-footer__social">
+                        
+                    <h4>Social</h4>
+
+                    <ul class="s-footer__linklist">
+                        <li><a href="#0">Facebook</a></li>
+                        <li><a href="#0">Instagram</a></li>
+                        <li><a href="#0">Twitter</a></li>
+                        <li><a href="#0">Pinterest</a></li>
+                        <li><a href="#0">Google+</a></li>
+                        <li><a href="#0">LinkedIn</a></li>
+                    </ul>
+
+                </div> --><!-- end s-footer__social -->
+<!--
+                <div class="col-five md-full end s-footer__subscribe">
+                        
+                    <h4>Our Newsletter</h4>
+
+                    <p>Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa consequatur occaecati.</p>
+
+                    <div class="subscribe-form">
+                        <form id="mc-form" class="group" novalidate="true">
+
+                            <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                
+                            <input type="submit" name="subscribe" value="Send">
+                
+                            <label for="mc-email" class="subscribe-message"></label>
+                
+                        </form>
+                    </div>
+
+                </div> --><!-- end s-footer__subscribe -->
+<!--
+            </div>
+        </div> --><!-- end s-footer__main -->
+<!--
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="col-full">
+                    <div class="s-footer__copyright">
+                        <span>© Copyright Philosophy 2018</span> 
+                        <span>Site Template by <a href="https://colorlib.com/">Colorlib</a></span>
+                    </div>
+
+                    <div class="go-top">
+                        <a class="smoothscroll" title="Back to Top" href="#top"></a>
+                    </div>
+                </div>
+            </div>
+        </div> --><!-- end s-footer__bottom -->
+    </footer> <!-- end s-footer -->
+
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
