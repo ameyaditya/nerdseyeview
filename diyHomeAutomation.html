@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Boston Housing Prices-Data Analysis</title>
+    <title>DIY: How to turn a Light Bulb on using Raspberry Pi and Google Assistant</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -112,63 +112,191 @@
 
             <div class="s-content__header col-full">
                 <h1 class="s-content__header-title">
-                    Boston Housing Prices - Data Analysis
+                    DIY: How to turn a Light Bulb on using Raspberry Pi and Google Assistant
                 </h1>
                 <ul class="s-content__header-meta">
-                    <li class="date">May 27, 2018</li>
+                    <li class="date">January 24, 2019</li>
                     <li class="cat">
                         In
-                        <a href="#0">Tech Posts</a>
-                        <a href="#0">Projects</a>
+                        <a href="projects.html">Projects</a>
                     </li>
                 </ul>
             </div> <!-- end s-content__header -->
-    
-            <div class="s-content__media col-full">
-                <div class="s-content__slider slider">
-                    <div class="slider__slides">
-                        <div class="slider__slide">
-                            <img src="pics/homepage/boston1.png" 
-                                 srcset="pics/homepage/boston1.png 2000w, 
-                                         pics/homepage/boston1.png 1000w, 
-                                         pics/homepage/boston1.png 500w" 
-                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
-                        </div>
-                        <div class="slider__slide">
-                            <img src="pics/boston.png" 
-                                 srcset="pics/boston.png 2000w, 
-                                         pics/boston.png 1000w, 
-                                         pics/boston.png 500w" 
-                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
-                        </div>
-                        <!--
-                        <div class="slider__slide">
-                            <img src="images/thumbs/single/gallery/single-gallery-03-1000.jpg" 
-                                 srcset="images/thumbs/single/gallery/single-gallery-03-2000.jpg 2000w, 
-                                        images/thumbs/single/gallery/single-gallery-03-1000.jpg 1000w, 
-                                        images/thumbs/single/gallery/single-gallery-03-500.jpg 500w" 
-                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
-                        </div>
-                    -->
-                    </div>
-                </div>
-            </div> <!-- end s-content__media -->
-
             <div class="col-full s-content__main">
 
-                <p >Boston Housing prices is a popular dataset for learners into building predictive models. In this current era of big data, need to make meaning out of it is essential. Boston housing prices is a dataset that consists of a few features of houses like build area, number of bedrooms, number of floors, average salary of members in that area, and also the prices of houses. Using this data, I have tried to analysis and find patterns in the data and generate a predictive model using linear regression.</p>
-                
-                <p>The code and the graphs plotted are almost self explanatory. So I didn't go about explaining every line I have written.
+                <p class="">This is a step by step guide on How to use Google Assistant to turn a Light Bulb. I will go with the assumptions that you know how to setup the raspberry pi with NOOBS operating system, and run the update and upgrade to finalize the setup. I hope you have some basic knowledge of python or any programming language to understand the code part this project. We are working with high voltages and proper care must be taken while making the connections and working on the project. </p>
+                <p>Items Required<br>
+                    <ul>
+                        <li>Raspberry Pi 3 Model B</li>
+                        <li>Relay</li>
+                        <li>Jumper Wires (female to female)</li>
+                        <li>A light bulb connected to two wires and a plug</li>
+                    </ul>
                 </p>
-                <p>The code for the entire application is there in the following GitHub link. <a href="https://github.com/ameyaditya/Machine_Learning/tree/master/Projects/Boston%20housing%20prices" target="_blank">Click here for complete code</a></p>
+                <p>
+                <img src="pics/connections.jpg" 
+                     srcset="pics/connections.jpg 2000w, pics/connections.jpg 1000w, pics/connections.jpg 500w" 
+                     sizes="(max-width: 2000px) 100vw, 2000px" alt="" style="margin-bottom: 10px;">
+                <caption><a href="https://circuitdigest.com/fullimage?i=circuitdiagram_mic/Circuit-diagram-for-Voice-controlled-Home-automation-using-Amazon-Alexa-on-Raspberry-Pi.png">Image Source</a></caption>
+                </p>
+               <p>Making the circuit connections as shown in the diagram<br>
+                    <ul>
+                        <li>Connect Pin 2 on the raspberry pi to the +Vcc on the relay, this is used to drive the relay.</li>
+                        <li>Connect any ground pin on the raspberry pi to the ground pin on the relay. I have chosen pin 6</li>
+                        <li>Then connect the GPIO pin 12 to input of the relay.</li>
+                        <li>Connect two insulated copper wires, to the center and either of the inputs in the relay and screw them tightly.</li>
+                        <li>Connect one end to the bulb and the other to plug. Make sure you make the connections on the neutral line.</li>
+                    </ul>
+               </p>
+
+                <p>
+                    Make sure all the connections are made properly and power your Raspberry Pi on and run the following script to check if everything works fine.
+                    <pre><code>
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18,GPIO.OUT)
+
+def switch_on():
+    GPIO.output(18, False)
+
+def switch_off():
+    GPIO.output(18, True)
+
+print("Turning bulb on")
+switch_on()
+time.sleep(3)
+print("Turning bulb off")
+switch_off()
+</code></pre>
+                </p>
+<p>Keep in mind the True and False inputs in switch_on and switch_off functions may have to interchanged based on the wire connections made on the relay, run the script, check and set it accordingly.</p>
+<p>Now you are able to turn the light bulb on and off using the python script. To be able to control it using Google assistant, we will use Adafruit IO and IFTTT and configure it to work.</p>
+
+<p>
+    <ol>
+        <li>
+            Setting up Adafruit Account<br>
+            <ul>
+                <li><a href="https://io.adafruit.com/">https://io.adafruit.com</a> visit the following link and create an account and login.</li>
+                <li>Create a new Dashboard by clicking on Actions->Create a new Dashboard.</li>
+                <li>Enter your newly created Dashboard and click on the Create a new block icon (plus icon).</li>
+                <li>Select the Toggle icon.</li>
+                <li>Create a new feed called ‘switch-control’ and check the box next to it and click next step.</li>
+                <li>Give the block a title (switch) and click create block.</li>
+                <li>On the top right you will find a key icon that says ‘your secret AIO key’, click on it and copy the username and active key, you will need it later to replace in the python script.</li>
+            </ul>
+        </li>
+        <li>
+            Setting up IFTTT<br>
+            <ul>
+                <li><a herf="https://ifttt.com">https://ifttt.com</a> visit the following website and create an account and login</li>
+                <li>On login, click on My Applets->New Applet.</li>
+                <li>Click on the plus icon next to 'this' and search for Google Assistant and select it.</li>
+                <li>Connect the assistant with your Gmail account. (This account should also be registered on the phone that is used to control the switch).</li>
+                <li>Select ‘say a simple phrase’ and fill in the phrases you would want to tell the assistant to turn the light on (‘Turn light on’, ‘light on’). You can add multiple phrases. Add a response, that the assistant will give once it has executed the task at hand (‘light turned on’) and click on create trigger.</li>
+                <li>Now click on the plus icon next to ‘that’ and search for Adafruit and select it.</li>
+                <li>Connect it you the Adafruit account you had created earlier.</li>
+                <li>Select ‘send data to Adafruit IO’ and select ‘switch-control’ under the Feed name and ‘ON’ under Data to save and click create.</li>
+                <li>Repeat the steps and create an applet to turn light off. In step 4 change phrase to (‘Turn light off’, ‘lights off’) and response to (‘light turned off’). And in step 7, change Data to save to ‘OFF’ and create.</li>
+            </ul>
+        </li>
+    </ol>
+</p>
+<p>Open terminal on your raspberry pi and run the following command<br><code>pip3 install adafruit-io</code></p>
+<p>
+    Save and run the following script on your raspberry pi. Make sure you replace the username and AIO key in the below script.
+    <pre>
+        <code>
+import RPi.GPIO as GPIO
+from Adafruit_IO import Client
+import time
+
+ADAFRUIT_IO_USERNAME = "your username"
+ADAFRUIT_IO_KEY = "your secret AIO key"
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18,GPIO.OUT)
+
+def switch_on():
+    GPIO.output(18, False)
+    print("turning light on")
+
+def switch_off():
+    GPIO.output(18, True)
+    print("turning light off")
+    
+aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
+
+while True:
+    data = aio.receive('switch-control')
+    if data.value == 'ON':
+        switch_on()
+    elif data.value == 'OFF':
+        switch_off()
+    time.sleep(1)
+        </code>
+    </pre>
+</p>
+<p>Now run Google assistant on your phone and give it the command to turn lights on or off. The script is running in an infinite loop, you must keep the script running if you want to control the bulb using Google assistant, once done, press ctrl+C to terminate the script.</p>
+<p>Screenshots to help you</p>
+<div class="s-content__slider slider">
+    <div class="slider__slides">
+        <div class="slider__slide">
+            <img src="pics/diy/pic1.png" 
+                 srcset="pics/diy/pic1.png 2000w, 
+                         pics/diy/pic1.png 1000w, 
+                         pics/diy/pic1.png 500w" 
+                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+        </div>
+        <div class="slider__slide">
+            <img src="pics/diy/pic2.png" 
+                 srcset="pics/diy/pic2.png 2000w, 
+                         pics/diy/pic2.png 1000w, 
+                         pics/diy/pic2.png 500w" 
+                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+        </div>
+        <div class="slider__slide">
+            <img src="pics/diy/pic3.png" 
+                 srcset="pics/diy/pic3.png 2000w, 
+                         pics/diy/pic3.png 1000w, 
+                         pics/diy/pic3.png 500w" 
+                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+        </div>
+        <div class="slider__slide">
+            <img src="pics/diy/pic4.png" 
+                 srcset="pics/diy/pic4.png 2000w, 
+                         pics/diy/pic4.png 1000w, 
+                         pics/diy/pic4.png 500w" 
+                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+        </div>
+        <div class="slider__slide">
+            <img src="pics/diy/pic4.png" 
+                 srcset="pics/diy/pic4.png 2000w, 
+                         pics/diy/pic4.png 1000w, 
+                         pics/diy/pic4.png 500w" 
+                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+        </div>
+        <div class="slider__slide">
+            <img src="pics/diy/pic5.png" 
+                 srcset="pics/diy/pic5.png 2000w, 
+                         pics/diy/pic5.png 1000w, 
+                         pics/diy/pic5.png 500w" 
+                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+        </div>
+
+    </div>
+</div>
 
                 <p class="s-content__tags">
                     <span>Post Tags</span>
 
                     <span class="s-content__tag-list">
-                        <a href="#0">Data Analysis</a>
-                        <a href="#0">Linear Regression</a>
-                        <a href="#0">Machine Learning</a>
+                        <a href="#0">Home Automation</a>
+                        <a href="#0">Raspberry Pi</a>
+                        <a href="#0">Google Assistant</a>
+                        <a href="#0">DIY</a>
                         <!--<a href="#0">turpis</a>-->
                     </span>
                 </p> <!-- end s-content__tags -->
@@ -196,15 +324,15 @@
                 <div class="s-content__pagenav">
                     <div class="s-content__nav">
                         <div class="s-content__prev">
-                            <a href="bigdata.html" rel="prev">
+                            <a href="bostonhousing.html" rel="prev">
                                 <span>Previous Post</span>
-                                Big Data and Analytics 
+                                Data Analysis: Boston Housing Prices
                             </a>
                         </div>
                         <div class="s-content__next">
-                            <a href="diyHomeAutomation.html" rel="next">
+                            <a href="homeAutomation.html" rel="next">
                                 <span>Next Post</span>
-                                DIY: How to turn a Light Bulb on using Raspberry Pi and Google Assistant
+                                Home Automation with Raspberry Pi and Google Assistant
                             </a>
                         </div>
                     </div>
@@ -213,13 +341,12 @@
             </div> <!-- end s-content__main -->
 
         </article>
-
     </section> <!-- s-content -->
 
 
     <!-- s-extra
     ================================================== -->
-   <section class="s-extra">
+    <section class="s-extra">
 
         <div class="row top">
 
